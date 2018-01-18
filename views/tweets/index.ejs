@@ -1,9 +1,9 @@
-<% if (typeof(user) != 'undefined') { %>
+<% if (typeof(session) != 'undefined') { %>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-sm-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Hi <strong>@<%= user.username %></strong>!
+                    Hi <strong>@<%= session.username %></strong>!
                 </div>
                 <div class="panel-body">
                     <form action="/tweets" method="post">

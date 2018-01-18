@@ -4,7 +4,8 @@
             <% tweets.forEach((tweet) => { %>
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <p><strong>@<%= tweet.username %></strong> - <%= moment(tweet.createdAt).format("LL, LTS") %></strong></p>
+                        <p><a href="/profile/<%= tweet.username %>"><strong>@<%= tweet.username %></strong></a> 
+                            - <%= moment(tweet.createdAt).format("LL, LTS") %></strong></p>
                         <p><%= tweet.message %></p>
                     </div>
                 </div>

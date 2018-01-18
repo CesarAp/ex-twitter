@@ -7,7 +7,7 @@ module.exports.index = (req, res, next) => {
         .sort({ createdAt: -1 })
         .then((tweets) => {
             res.render('tweets/index', {
-                user: req.session.currentUser,
+                session: req.session.currentUser,
                 tweets: tweets,
                 moment: moment
             });
@@ -29,7 +29,7 @@ module.exports.create = (req, res, next) => {
             console.error(error);
             if (error instanceof mongoose.Error.ValidationError) {
                 res.render('tweets/index', {
-                    user: req.session.currentUser,
+                    session: req.session.currentUser,
                     errors: error.errors
                 });
             }
