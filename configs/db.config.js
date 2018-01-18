@@ -3,7 +3,7 @@ const DB_NAME = 'ex-twitter';
 const MONGO_URI = `mongodb://localhost/${DB_NAME}`;
 
 mongoose.Promise = Promise;
-mongoose.connect(MONGO_URI, { useMongoClient: true })
+mongoose.connect(MONGO_URI)
     .then(() => {
         console.log(`Connected to ${DB_NAME} database.`);
     }).catch((error) => {
