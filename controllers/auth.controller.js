@@ -14,7 +14,8 @@ module.exports.doSignup = (req, res, next) => {
                 user = new User(req.body);
                 user.save()
                     .then(() => {
-                        res.redirect('/signup');
+                        req.session.currentUser = user;
+                        res.redirect('/tweets');
                     }).catch(error => {
                         if (error instanceof mongoose.Error.ValidationError) {
                             res.render('auth/signup', { user: user, error: error.errors })
@@ -56,7 +57,7 @@ module.exports.doLogin = (req, res, next) => {
                                 res.render('auth/login', errorData);
                             } else {
                                 req.session.currentUser = user;
-                                res.redirect('/user/profile');
+                                res.redirect('/tweets');
                             }
                         })
                         .catch(error => next(error));
