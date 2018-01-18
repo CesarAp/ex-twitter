@@ -1,26 +1,28 @@
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Hi <strong>@<%= user.username %></strong>!
-            </div>
-            <div class="panel-body">
-                <form action="/tweets" method="post">
-                    <div class="form-group <%= typeof(errors) !== 'undefined' && errors.message ? 'has-error' : '' %>">
-                        <div class="input-group">
-                            <span class="input-group-addon" ><i class="fa fa-twitter"></i></span>
-                            <textarea class="form-control" name="message" cols="3" placeholder="What's going on?"></textarea>
+<% if (typeof(user) != 'undefined') { %>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Hi <strong>@<%= user.username %></strong>!
+                </div>
+                <div class="panel-body">
+                    <form action="/tweets" method="post">
+                        <div class="form-group <%= typeof(errors) !== 'undefined' && errors.message ? 'has-error' : '' %>">
+                            <div class="input-group">
+                                <span class="input-group-addon" ><i class="fa fa-twitter"></i></span>
+                                <textarea class="form-control" name="message" cols="3" placeholder="What's going on?"></textarea>
+                            </div>
+                            <% if (typeof(errors) !== 'undefined' && errors.message) { %>
+                                <label class="control-label"><%= errors.message %></label>
+                            <% } %>
                         </div>
-                        <% if (typeof(errors) !== 'undefined' && errors.message) { %>
-                            <label class="control-label"><%= errors.message %></label>
-                        <% } %>
-                    </div>
-                    <div class="form-actions">
-                        <button class="btn btn-primary pull-right" type="submit">tweet!</button>
-                    </div>
-                </form>
+                        <div class="form-actions">
+                            <button class="btn btn-primary pull-right" type="submit">tweet!</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+<% } %>
 <%- include('partials/list', { tweets: tweets }); %>
