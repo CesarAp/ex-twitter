@@ -4,12 +4,12 @@ const tweetSchema = new mongoose.Schema({
         type: String,
         required: [true, `Tweet can't be empty`]
     },
-    user_id: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: [true, `Tweet needs an user`]
     },
-    user_name: {
+    username: {
         type: String,
         required: [true, `Tweet needs an username`]
     }
