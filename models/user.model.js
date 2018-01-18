@@ -11,6 +11,15 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'User needs a password']
+    },
+    following: {
+        type: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User'
+            }
+        ],
+        default: []
     }
 }, { timestamps: true });
 
